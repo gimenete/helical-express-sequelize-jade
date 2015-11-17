@@ -1,0 +1,36 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='/css/bootstrap.min.css', media='screen')
+
+    title {{ root.projectName }}
+  body
+    .navbar.navbar-default.navbar-fixed-top
+      .container
+        .navbar-header
+          a.navbar-brand(href='/') {{ root.projectName }}
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-main')
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+        #navbar-main.navbar-collapse.collapse
+          ul.nav.navbar-nav.navbar-right
+            if !user
+              li
+                a(href='/auth/{{ root.auth }}') Sign up
+            else
+              li
+                a(href='javascript:void(0)') Hi #{user.id}
+              li
+                a(href='/logout') Logout
+
+    .container(style='margin-top: 60px')
+      block content
+
+
+    script(src='/js/jquery-1.11.3.min.js')
+    script(src='/js/bootstrap.min.js')
+
+    block scripts

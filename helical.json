@@ -1,27 +1,42 @@
 {
   "generators": [
     {
-      "source": "models.js",
+      "source": "generators/models.js",
       "path": "models/index.js",
       "foreach": ""
     },
     {
-      "source": "package.json",
+      "source": "generators/package.json",
       "path": "package.json",
       "foreach": ""
     },
     {
-      "source": "auth.js",
+      "source": "generators/auth.js",
       "path": "auth.js",
       "foreach": ""
     },
     {
-      "source": "controller.js",
+      "source": "generators/home.js",
+      "path": "controllers/home.js",
+      "foreach": ""
+    },
+    {
+      "source": "generators/layout.jade",
+      "path": "views/layout.jade",
+      "foreach": ""
+    },
+    {
+      "source": "generators/index.jade",
+      "path": "views/index.jade",
+      "foreach": ""
+    },
+    {
+      "source": "generators/controller.js",
       "path": "controllers/{{ object.name | lower }}.js",
       "foreach": "entities"
     },
     {
-      "source": "app.js",
+      "source": "generators/app.js",
       "path": "app.js",
       "foreach": ""
     }
