@@ -1,0 +1,39 @@
+{
+  "private": true,
+  "name": "{{ root.projectName }}",
+  "version": "1.0.0",
+  "description": "Node.js app",
+  "scripts": {
+    "start": "node app",
+    "test": "NODE_ENV=test mocha --bail --reporter spec test/"
+  },
+  "author": {
+    "name": "helical"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "cheerio": "^0.19.0",
+    "cookie-parser": "^1.4.0",
+    "cookie-session": "^1.2.0",
+    "express": "^4.13.3",
+    "express-session": "^1.11.3",
+    "jade": "^1.11.0",
+    "moment": "^2.10.6",
+    "multer": "^1.0.6",
+    "multiline": "^1.0.2",
+    "node-errors": "^0.2.0",
+    "passport": "^0.3.0",
+    "passport-twitter": "^1.0.3",
+    "pg": "^4.4.3",
+    "pg-hstore": "^2.3.2",
+    "request": "^2.64.0",
+    "sequelize": "^3.12.2",
+    "txain": "^0.4.1",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "mocha": "^1.21.4"
+  },
+  "keywords": []
+}

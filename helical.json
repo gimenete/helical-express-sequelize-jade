@@ -1,0 +1,38 @@
+{
+  "generators": [
+    {
+      "source": "models.js",
+      "path": "models/index.js",
+      "foreach": ""
+    },
+    {
+      "source": "package.json",
+      "path": "package.json",
+      "foreach": ""
+    },
+    {
+      "source": "auth.js",
+      "path": "auth.js",
+      "foreach": ""
+    },
+    {
+      "source": "controller.js",
+      "path": "controllers/{{ object.name | lower }}.js",
+      "foreach": "entities"
+    },
+    {
+      "source": "app.js",
+      "path": "app.js",
+      "foreach": ""
+    }
+  ],
+  "options": [
+    {
+      "name": "auth",
+      "describe": "Authentication mechanism",
+      "type": "string",
+      "choices": ["twitter", "facebook", ""],
+      "default": ""
+    }
+  ]
+}

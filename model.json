@@ -1,0 +1,40 @@
+{
+  "projectName": "project_name",
+  "entities": [
+    {
+      "name": "User",
+      "fields": [
+        {
+          "name": "email",
+          "type": "string"
+        },
+        {
+          "name": "name",
+          "type": "string"
+        }
+      ],
+      "actions": [
+        {
+          "name": "login",
+          "method": "post"
+        },
+        {
+          "name": "register",
+          "method": "post"
+        },
+        {
+          "name": "forgotPassword",
+          "method": "post"
+        },
+        {
+          "name": "resetPassword",
+          "method": "post"
+        },
+        {
+          "name": "invite",
+          "method": "post"
+        }
+      ]
+    }
+  ]
+}
