@@ -1,7 +1,4 @@
-extends layout
-
-- var querystring = require('querystring')
-- var _ = require('underscore')
+extends ../layout
 
 block content
 
@@ -25,4 +22,4 @@ block content
               a.btn.btn-primary(href='/admin/{{ object.name | lower }}.edit?id=#{ {{ object.name | lower }}.id }') Edit
               a.btn.btn-danger(href='/admin/{{ object.name | lower }}.delete?id=#{ {{ object.name | lower }}.id }', onclick="return confirm('Sure?')") Delete
 
-  include pagination
+  include ../pagination

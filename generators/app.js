@@ -35,6 +35,10 @@ dirs.forEach(function(dir) {
   })
 })
 
+app.get('/', function(req, res, next) {
+  res.render('index')
+})
+
 app.get('/admin', function(req, res, next) {
   res.render('admin/index')
 })

@@ -67,12 +67,12 @@
     },
     {
       "source": "generators/entity-edit.jade",
-      "path": "views/admin/{{ object.name | lower }}-edit.jade",
+      "path": "views/admin/{{ object.name | lower }}/edit.jade",
       "foreach": "entities"
     },
     {
       "source": "generators/entity-list.jade",
-      "path": "views/admin/{{ object.name | lower }}-list.jade",
+      "path": "views/admin/{{ object.name | lower }}/list.jade",
       "foreach": "entities"
     }
   ],

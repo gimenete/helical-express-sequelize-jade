@@ -15,7 +15,7 @@ exports.configure = function(app) {
       })
     })
     .then(function(result, callback) {
-      res.render('admin/{{ object.name | lower}}-list', {
+      res.render('admin/{{ object.name | lower}}/list', {
         {{ object.name | lower}}s: result.rows,
         page: req.pagination.page,
         pages: req.pagination.pages(result.count),
@@ -39,7 +39,7 @@ exports.configure = function(app) {
       })
       .end(next)
     } else {
-      res.render('admin/{{ object.name | lower}}-edit', {
+      res.render('admin/{{ object.name | lower}}/edit', {
         {{ object.name | lower}}: {},
       })
     }
