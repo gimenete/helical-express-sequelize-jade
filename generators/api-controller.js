@@ -1,10 +1,26 @@
-var models = require('../models')
+var models = require('../../models')
 var txain = require('txain')
 var errors = require('node-errors')
+var pagination = require('../pagination')
 
 exports.configure = function(app) {
 
-  app.get('/{{ object.name | lower}}.show', function(req, res, next) {
+  app.get('/api/{{ object.name | lower}}.list', pagination, function(req, res, next) {
+    var id = req.query.id
+
+    txain(function(callback) {
+      return models.{{ object.name }}.all({
+        limit: pagination.limit,
+        offset: pagination.offset,
+      })
+    })
+    .then(function(list, callback) {
+      res.json({ list: list })
+    })
+    .end(next)
+  })
+
+  app.get('/api/{{ object.name | lower}}.show', function(req, res, next) {
     var id = req.query.id
 
     txain(function(callback) {
@@ -17,7 +33,7 @@ exports.configure = function(app) {
     .end(next)
   })
 
-  app.post('/{{ object.name | lower}}.create', function(req, res, next) {
+  app.post('/api/{{ object.name | lower}}.create', function(req, res, next) {
     var obj = {
       {% for field in object.fields %}'{{ field.name }}': req.body['{{ field.name }}'],
       {% endfor %}
@@ -32,7 +48,7 @@ exports.configure = function(app) {
     .end(next)
   })
 
-  app.put('/{{ object.name | lower}}.update', function(req, res, next) {
+  app.put('/api/{{ object.name | lower}}.update', function(req, res, next) {
     var id = req.query.id
 
     txain(function(callback) {
@@ -51,7 +67,7 @@ exports.configure = function(app) {
     .end(next)
   })
 
-  app.delete('/{{ object.name | lower}}.delete', function(req, res, next) {
+  app.delete('/api/{{ object.name | lower}}.delete', function(req, res, next) {
     var id = req.query.id
 
     txain(function(callback) {

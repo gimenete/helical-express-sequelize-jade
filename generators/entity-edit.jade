@@ -1,0 +1,26 @@
+extends layout
+
+block content
+
+  if {{ object.name | lower }}.id
+    h1 Edit {{ object.name | lower }}
+    hr
+  else
+    h1 Create {{ object.name | lower }}
+    hr
+  
+  form.form-horizontal(method='post', action='/admin/{{ object.name | lower }}.edit')
+    if {{ object.name | lower }}.id
+      input(type='hidden', name='id', value={{ object.name | lower }}.id)
+  {% for field in object.fields %}
+    .form-group
+      label.col-sm-2.control-label {{ field.name }}
+      .col-sm-10
+        input.form-control(type='text', name='{{ field.name }}', value={{ object.name | lower }}.{{ field.name }})
+  {% endfor %}
+    .form-group
+      .col-sm-offset-2.col-sm-10
+        if {{ object.name | lower }}.id
+          button.btn.btn-primary(type='submit') Save changes
+        else
+          button.btn.btn-primary(type='submit') Create

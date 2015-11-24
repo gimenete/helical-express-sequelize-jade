@@ -1,0 +1,28 @@
+extends layout
+
+- var querystring = require('querystring')
+- var _ = require('underscore')
+
+block content
+
+  p.pull-right(style='margin-top: 30px')
+    a.btn.btn-primary(href='/admin/{{ object.name | lower }}.edit') Create a new {{ object.name | lower }}
+
+  h1 {{ object.name }}
+  hr
+  
+  table.table.table-bordered
+    thead
+      tr{% for field in object.fields %}
+        th {{ field.name }}{% endfor %}
+        th
+    tbody
+      for {{ object.name | lower }} in {{ object.name | lower }}s
+        tr{% for field in object.fields %}
+          td= {{ object.name | lower }}.{{ field.name }}{% endfor %}
+          td.text-right
+            .btn-group
+              a.btn.btn-primary(href='/admin/{{ object.name | lower }}.edit?id=#{ {{ object.name | lower }}.id }') Edit
+              a.btn.btn-danger(href='/admin/{{ object.name | lower }}.delete?id=#{ {{ object.name | lower }}.id }', onclick="return confirm('Sure?')") Delete
+
+  include pagination

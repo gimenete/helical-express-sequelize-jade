@@ -31,14 +31,49 @@
       "foreach": ""
     },
     {
-      "source": "generators/controller.js",
-      "path": "controllers/{{ object.name | lower }}.js",
+      "source": "generators/api-controller.js",
+      "path": "controllers/api/{{ object.name | lower }}.js",
       "foreach": "entities"
     },
     {
       "source": "generators/app.js",
       "path": "app.js",
       "foreach": ""
+    },
+    {
+      "source": "generators/admin-controller.js",
+      "path": "controllers/admin/{{ object.name | lower }}.js",
+      "foreach": "entities"
+    },
+    {
+      "source": "generators/layout-admin.jade",
+      "path": "views/admin/layout.jade",
+      "foreach": ""
+    },
+    {
+      "source": "generators/admin.jade",
+      "path": "views/admin/index.jade",
+      "foreach": ""
+    },
+    {
+      "source": "generators/pagination.js",
+      "path": "controllers/pagination.js",
+      "foreach": ""
+    },
+    {
+      "source": "generators/pagination.jade",
+      "path": "views/admin/pagination.jade",
+      "foreach": ""
+    },
+    {
+      "source": "generators/entity-edit.jade",
+      "path": "views/admin/{{ object.name | lower }}-edit.jade",
+      "foreach": "entities"
+    },
+    {
+      "source": "generators/entity-list.jade",
+      "path": "views/admin/{{ object.name | lower }}-list.jade",
+      "foreach": "entities"
     }
   ],
   "options": [

@@ -20,11 +20,23 @@ app.use(require('cookie-session')({
 
 require('./auth')(app)
 
-var dir = path.join(__dirname, 'controllers')
-fs.readdirSync(dir).forEach(function(file) {
-  if (file.endsWith('.js')) {
-    require(path.join(dir, file)).configure(app)
-  }
+var dirs = [
+  path.join(__dirname, 'controllers', 'api'),
+  path.join(__dirname, 'controllers', 'admin')
+]
+dirs.forEach(function(dir) {
+  fs.readdirSync(dir).forEach(function(file) {
+    if (file.endsWith('.js')) {
+      var m = require(path.join(dir, file))
+      if (m.configure) {
+        m.configure(app)
+      }
+    }
+  })
+})
+
+app.get('/admin', function(req, res, next) {
+  res.render('admin/index')
 })
 
 app.use(function(req, res) {

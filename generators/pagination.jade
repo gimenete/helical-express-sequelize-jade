@@ -1,0 +1,23 @@
+nav.text-center
+  ul.pagination
+    if page == 1
+      li.disabled
+        a(href='javascript:void(0)', aria-label='Previous')
+          span(aria-hidden='true') «
+    else
+      li
+        a(href='?page=#{page-1}', aria-label='Previous')
+          span(aria-hidden='true') «
+    - var i = 0
+    while i < pages
+      - i++
+      li(class=(page == i) ? 'active' : void(0))
+        a(href='?page=#{i}')= i
+    if pages == page
+      li.disabled
+        a(href='javascript:void(0)', aria-label='Next')
+          span(aria-hidden='true') »
+    else
+      li
+        a(href='?page=#{page+1}', aria-label='Next')
+          span(aria-hidden='true') »
