@@ -13,7 +13,6 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.14.1",
-    "cheerio": "^0.19.0",
     "cookie-parser": "^1.4.0",
     "cookie-session": "^1.2.0",
     "express": "^4.13.3",
@@ -29,7 +28,7 @@
     "pg-hstore": "^2.3.2",
     "request": "^2.64.0",
     "sequelize": "^3.12.2",
-    "txain": "^0.4.1",
+    "sequelize-sync-diff": "^0.1.0",
     "underscore": "^1.8.3"
   },
   "devDependencies": {

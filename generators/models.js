@@ -1,4 +1,5 @@
 var Sequelize = require('sequelize')
+require('sequelize-sync-diff')(Sequelize)
 
 var options = {
   dialect: 'postgres',
@@ -30,3 +31,14 @@ var sequelize = new Sequelize(url, options)
 sequelize.sync().then(function() {
   console.log('Database schema synchronized')
 })
+
+sequelize
+  .syncDiff('postgres://postgres:postgres@localhost/{{ root.projectName }}_dummy')
+  .then(function(sql) {
+    console.log('---------------------------------------------')
+    console.log('-- Run these commands to sync the database --')
+    console.log('---------------------------------------------')
+    console.log()
+    console.log(sql)
+    console.log('---------------------------------------------')
+  })
