@@ -28,7 +28,6 @@
     "passport-twitter": "^1.0.3",
     "pg": "^4.4.3",
     "pg-hstore": "^2.3.2",
-    "request": "^2.64.0",
     "sequelize": "^3.12.2",
     "sequelize-sync-diff": "^0.1.0",
     "underscore": "^1.8.3"

@@ -16,7 +16,6 @@ exports.configure = function(app) {
           facebookId: profile.id,
           name: profile.displayName,
         }
-        console.log('profile', profile)
         return models.User.create(user)
           .then((user) => {
             done(null, { id: user.id })
