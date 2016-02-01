@@ -2,43 +2,43 @@
   "generators": [
     {
       "source": "generators/dotenv",
-      "path": ".env",
-      "foreach": ""
+      "path": ".env"
     },
     {
       "source": "generators/gitignore",
-      "path": ".gitignore",
-      "foreach": ""
+      "path": ".gitignore"
     },
     {
       "source": "generators/models.js",
-      "path": "models/index.js",
-      "foreach": ""
+      "path": "models/index.js"
     },
     {
       "source": "generators/package.json",
-      "path": "package.json",
-      "foreach": ""
+      "path": "package.json"
+    },
+    {
+      "source": "generators/auth-twitter.js",
+      "path": "controllers/auth/twitter.js"
+    },
+    {
+      "source": "generators/auth-facebook.js",
+      "path": "controllers/auth/facebook.js"
     },
     {
       "source": "generators/auth.js",
-      "path": "auth.js",
-      "foreach": ""
+      "path": "controllers/auth/auth.js"
     },
     {
       "source": "generators/home.js",
-      "path": "controllers/home.js",
-      "foreach": ""
+      "path": "controllers/home.js"
     },
     {
       "source": "generators/layout.jade",
-      "path": "views/layout.jade",
-      "foreach": ""
+      "path": "views/layout.jade"
     },
     {
       "source": "generators/index.jade",
-      "path": "views/index.jade",
-      "foreach": ""
+      "path": "views/index.jade"
     },
     {
       "source": "generators/api-controller.js",
@@ -47,8 +47,11 @@
     },
     {
       "source": "generators/app.js",
-      "path": "app.js",
-      "foreach": ""
+      "path": "app.js"
+    },
+    {
+      "source": "generators/admin-home.js",
+      "path": "controllers/admin/home.js"
     },
     {
       "source": "generators/admin-controller.js",
@@ -57,23 +60,19 @@
     },
     {
       "source": "generators/layout-admin.jade",
-      "path": "views/admin/layout.jade",
-      "foreach": ""
+      "path": "views/admin/layout.jade"
     },
     {
       "source": "generators/admin.jade",
-      "path": "views/admin/index.jade",
-      "foreach": ""
+      "path": "views/admin/index.jade"
     },
     {
       "source": "generators/pagination.js",
-      "path": "controllers/pagination.js",
-      "foreach": ""
+      "path": "controllers/pagination.js"
     },
     {
       "source": "generators/pagination.jade",
-      "path": "views/admin/pagination.jade",
-      "foreach": ""
+      "path": "views/admin/pagination.jade"
     },
     {
       "source": "generators/entity-edit.jade",

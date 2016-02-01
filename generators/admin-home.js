@@ -1,4 +1,4 @@
-var models = require('../models')
+var models = require('../../models')
 var errors = require('node-errors')
 
 exports.configure = function(app) {

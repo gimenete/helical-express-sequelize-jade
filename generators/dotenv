@@ -1,6 +1,19 @@
+# HTTP server
 PORT=3000
+
+# App configuration
+COOKIE_SESSION_SECRET=s3cr3t#s3cr3t
+
+# Database
 DATABASE_URL=postgres://postgres:postgres@localhost/{{ root.projectName }}
 DATABASE_URL_DUMMY=postgres://postgres:postgres@localhost/{{ root.projectName }}_dummy
+
+# Twitter authentication
 TWITTER_CONSUMER_KEY=YOUR_TWITTER_CONSUMER_KEY
 TWITTER_CONSUMER_SECRET=YOUR_TWITTER_CONSUMER_SECRET
 TWITTER_CALLBACK_URL=http://localhost:3000/auth/twitter/callback
+
+# Facebook authentication
+FACEBOOK_APP_ID=YOUR_FACEBOOK_APP_ID
+FACEBOOK_APP_SECRET=YOUR_FACEBOOK_APP_SECRET
+FACEBOOK_CALLBACK_URL=http://localhost:3000/auth/facebook/callback

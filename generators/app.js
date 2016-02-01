@@ -15,18 +15,14 @@ app.use(require('body-parser').urlencoded({ extended: true }))
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'jade')
 app.use(require('cookie-session')({
-  secret: 's3cr3t#s3cr3t',
+  secret: process.env.COOKIE_SESSION_SECRET,
   resave: true,
   saveUninitialized: true,
 }))
 
-require('./auth')(app)
-
-var dirs = [
-  path.join(__dirname, 'controllers', 'api'),
-  path.join(__dirname, 'controllers', 'admin')
-]
+var dirs = ['', 'api', 'admin', 'auth']
 dirs.forEach(function(dir) {
+  dir = path.join(__dirname, 'controllers', dir)
   fs.readdirSync(dir).forEach(function(file) {
     if (file.endsWith('.js')) {
       var m = require(path.join(dir, file))
@@ -35,14 +31,6 @@ dirs.forEach(function(dir) {
       }
     }
   })
-})
-
-app.get('/', function(req, res, next) {
-  res.render('index')
-})
-
-app.get('/admin', function(req, res, next) {
-  res.render('admin/index')
 })
 
 app.use(function(req, res) {
@@ -64,7 +52,7 @@ app.use(function(err, req, res, next) {
 })
 
 if (module.id === require.main.id) {
-  var port = process.env.PORT || 3000
+  var port = process.env.PORT
   http.createServer(app).listen(port)
   console.log('Started server at port %d', port)
 }
