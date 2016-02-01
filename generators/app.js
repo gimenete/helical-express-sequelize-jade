@@ -5,6 +5,8 @@ var fs = require('fs')
 var querystring = require('querystring')
 var errors = require('node-errors')
 
+require('dotenv').config()
+
 var app = exports.app = express()
 
 app.disable('x-powered-by')

@@ -1,6 +1,11 @@
 {
   "generators": [
     {
+      "source": "generators/dotenv",
+      "path": ".env",
+      "foreach": ""
+    },
+    {
       "source": "generators/gitignore",
       "path": ".gitignore",
       "foreach": ""

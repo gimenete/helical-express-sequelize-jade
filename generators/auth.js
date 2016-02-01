@@ -3,9 +3,6 @@ var TwitterStrategy = require('passport-twitter')
 var request = require('request')
 var errors = require('node-errors')
 
-var consumerKey = 'YOUR_TWITTER_CONSUMER_KEY'
-var consumerSecret = 'YOUR_TWITTER_CONSUMER_SECRET'
-
 module.exports = function(app) {
   app.use(passport.initialize())
   app.use(passport.session())
@@ -14,8 +11,8 @@ module.exports = function(app) {
     var options = {
       url: 'https://api.twitter.com/1.1/account/verify_credentials.json',
       oauth: {
-        consumer_key: consumerKey,
-        consumer_secret: consumerSecret,
+        consumer_key: process.env.TWITTER_CONSUMER_KEY,
+        consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
         token: user.token,
         token_secret: user.tokenSecret,
       },
@@ -35,11 +32,10 @@ module.exports = function(app) {
     done(null, user)
   })
 
-  var callbackURL = process.env.NODE_ENV === 'production' ? 'http://{{ root.projectName }}.herokuapp.com/auth/twitter/callback' : 'http://localhost:3000/auth/twitter/callback'
   passport.use(new TwitterStrategy({
-      consumerKey: consumerKey,
-      consumerSecret: consumerSecret,
-      callbackURL: callbackURL,
+      consumerKey: process.env.TWITTER_CONSUMER_KEY,
+      consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
+      callbackURL: process.env.TWITTER_CALLBACK_URL,
     },
     function(token, tokenSecret, profile, done) {
       var id = profile.id
@@ -47,7 +43,7 @@ module.exports = function(app) {
         token: token,
         tokenSecret: tokenSecret,
       }
-      done(null, user);
+      done(null, user)
     }
   ))
 

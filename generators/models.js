@@ -7,7 +7,7 @@ var options = {
   logging: false,
 }
 
-var url = process.env.DATABASE_URL || 'postgres://postgres:postgres@localhost/{{ root.projectName }}'
+var url = process.env.DATABASE_URL
 if (url.indexOf('localhost') === -1) {
   options.dialectOptions = { ssl: true }
 }
@@ -32,13 +32,15 @@ sequelize.sync().then(function() {
   console.log('Database schema synchronized')
 })
 
-sequelize
-  .syncDiff('postgres://postgres:postgres@localhost/{{ root.projectName }}_dummy')
-  .then(function(sql) {
-    console.log('---------------------------------------------')
-    console.log('-- Run these commands to sync the database --')
-    console.log('---------------------------------------------')
-    console.log()
-    console.log(sql)
-    console.log('---------------------------------------------')
-  })
+if (process.env.DATABASE_URL_DUMMY) {
+  sequelize
+    .syncDiff(process.env.DATABASE_URL_DUMMY)
+    .then(function(sql) {
+      console.log('---------------------------------------------')
+      console.log('-- Run these commands to sync the database --')
+      console.log('---------------------------------------------')
+      console.log()
+      console.log(sql)
+      console.log('---------------------------------------------')
+    })
+}
