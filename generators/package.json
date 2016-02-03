@@ -5,7 +5,8 @@
   "description": "Node.js app",
   "scripts": {
     "start": "node app",
-    "test": "NODE_ENV=test mocha --bail --reporter spec test/"
+    "test": "NODE_ENV=test mocha --bail --reporter spec test/",
+    "dbdiff": "DATABASE_URL=$(heroku config:get DATABASE_URL) node models"
   },
   "author": {
     "name": "helical"
@@ -23,13 +24,13 @@
     "multer": "^1.0.6",
     "multiline": "^1.0.2",
     "node-errors": "^0.2.0",
-    "passport": "^0.3.0",
+    "passport": "^0.3.2",
     "passport-facebook": "^2.0.0",
     "passport-twitter": "^1.0.3",
     "pg": "^4.4.3",
     "pg-hstore": "^2.3.2",
     "sequelize": "^3.12.2",
-    "sequelize-sync-diff": "^0.1.0",
+    "sequelize-sync-diff": "^0.1.1",
     "underscore": "^1.8.3"
   },
   "devDependencies": {

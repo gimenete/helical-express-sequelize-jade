@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 var Sequelize = require('sequelize')
 require('sequelize-sync-diff')(Sequelize)
 
@@ -28,19 +30,32 @@ var sequelize = new Sequelize(url, options)
 {% endfor %}
 {% endfor %}
 
-sequelize.sync().then(function() {
-  console.log('Database schema synchronized')
-})
-
-if (process.env.DATABASE_URL_DUMMY) {
-  sequelize
-    .syncDiff(process.env.DATABASE_URL_DUMMY)
-    .then(function(sql) {
+Promise.resolve()
+  .then(() => (
+    process.env.DATABASE_URL_DUMMY
+      ? sequelize.syncDiff(process.env.DATABASE_URL_DUMMY, {
+          dialect: 'postgres',
+          protocol: 'postgres',
+          logging: false,
+          dialectOptions: {
+            ssl: false
+          }
+        })
+      : sequelize.sync()
+  ))
+  .then(function(sql) {
+    if (sql && sql.trim() > 0) {
       console.log('---------------------------------------------')
       console.log('-- Run these commands to sync the database --')
       console.log('---------------------------------------------')
       console.log()
       console.log(sql)
       console.log('---------------------------------------------')
-    })
-}
+    } else {
+      console.log('Database schema synchronized')
+    }
+
+    if (module.id === require.main.id) {
+      process.exit(0)
+    }
+  })
