@@ -10,17 +10,13 @@ exports.configure = function(app) {
     },
     function(token, tokenSecret, profile, done) {
       models.User.find({ where: { facebookId: profile.id } })
-      .then((user) => {
-        if (user) return done(null, user)
-        user = {
+      .then((user) => (
+        user || models.User.create({
           facebookId: profile.id,
           name: profile.displayName,
-        }
-        return models.User.create(user)
-          .then((user) => {
-            done(null, { id: user.id })
-          })
-      })
+        })
+      ))
+      .then((user) => done(null, user))
       .catch(done)
     }
   ))

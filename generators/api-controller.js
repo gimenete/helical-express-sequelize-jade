@@ -11,7 +11,7 @@ exports.configure = function(app) {
       limit: pagination.limit,
       offset: pagination.offset,
     })
-    .then(() => {
+    .then((list) => {
       res.json({ list: list })
     })
     .catch(next)

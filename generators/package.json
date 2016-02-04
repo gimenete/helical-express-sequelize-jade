@@ -4,9 +4,9 @@
   "version": "1.0.0",
   "description": "Node.js app",
   "scripts": {
+    "dbdiff": "DATABASE_URL=$(heroku config:get DATABASE_URL) node models",
     "start": "node app",
-    "test": "NODE_ENV=test mocha --bail --reporter spec test/",
-    "dbdiff": "DATABASE_URL=$(heroku config:get DATABASE_URL) node models"
+    "test": "NODE_ENV=test mocha --bail --reporter spec test/"
   },
   "author": {
     "name": "helical"

@@ -44,7 +44,7 @@ Promise.resolve()
       : sequelize.sync()
   ))
   .then(function(sql) {
-    if (sql && sql.trim() > 0) {
+    if (sql && sql.trim().length > 0) {
       console.log('---------------------------------------------')
       console.log('-- Run these commands to sync the database --')
       console.log('---------------------------------------------')
